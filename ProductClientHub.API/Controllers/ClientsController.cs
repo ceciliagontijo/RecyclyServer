@@ -11,18 +11,35 @@ namespace ProductClientHub.API.Controllers
     public class ClientsController : ControllerBase
     {
         [HttpPost]
-        [ProducesResponseType(typeof(ResponseClientJson), StatusCodes.Status201Created)] // o que vai ser retornado
-        public IActionResult Register([FromBody] RequestClientJson request) //recebe dados do corpo da classe RequestClientJson
+        //indica os possíveis tipos de resposta da API
+        [ProducesResponseType(typeof(ResponseClientJson), StatusCodes.Status201Created)] 
+        [ProducesResponseType(typeof(ResponseErrorMessagesJson), StatusCodes.Status400BadRequest)]
+
+        public IActionResult Register([FromBody] RequestClientJson request)
+        //request recebe dados (no formato determinado na classe RequestClientJson)
         {
-            //cria um objeto da classe RegisterClientUseCase (que registra o cliente)
-            //é necessário um objeto do tipo RegisterClientUseCase para chamar o método Execute
-            var useCase = new RegisterClientUseCase();
+            try
+            {
+                //cria um objeto da classe RegisterClientUseCase (que registra o cliente)
+                var useCase = new RegisterClientUseCase();
 
-            // chama o método Execute com os dados recebidos no request
-            // o objeto useCase recebe o request (temporariamente para executar a lógica) e retorna um response
-            var response = useCase.Execute(request); 
+                // chama o método Execute com os dados recebidos no request
+                // o objeto useCase recebe o request (temporariamente para executar a lógica) e retorna um response
+                var response = useCase.Execute(request);
 
-            return Created(string.Empty, response); //função existente dentro da classe ControllerBase
+                return Created(string.Empty, response); //função existente dentro da classe ControllerBase
+            }
+            catch (ArgumentException ex)
+            {
+                //bad request = erro de requisição
+                //instanciando um objeto da classe ResponseErrorMessagesJson para retornar mensagens de erro
+                return BadRequest(new ResponseErrorMessagesJson(ex.Message));
+            }
+            catch
+            {
+                //quando o erro é desconhecido (não é um erro de argumento como acima)
+                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseErrorMessagesJson("UNKNOWN ERROR"));
+            }
         }
 
         [HttpPut]

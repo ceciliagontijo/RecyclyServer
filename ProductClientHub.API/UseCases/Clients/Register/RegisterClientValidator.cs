@@ -3,7 +3,7 @@ using ProductClientHub.Communication.Requets;
 
 namespace ProductClientHub.API.UseCases.Clients.Register
 {
-    public class RegisterClientValidator : AbstractValidator<RequestClientJson>
+    public class RegisterClientValidator : AbstractValidator<RequestClientJson> //biblioteca FluentValidation
     {
         public RegisterClientValidator() // construtor
         {
