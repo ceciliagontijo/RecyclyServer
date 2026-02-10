@@ -2,6 +2,7 @@
 using ProductClientHub.API.UseCases.Clients.Register;
 using ProductClientHub.Communication.Requets;
 using ProductClientHub.Communication.Responses;
+using ProductClientHub.Exception.ExceptionsBase;
 // classe controller: mostra o que a API vai receber e retornar em cada endpoint (rotas)
 namespace ProductClientHub.API.Controllers
 
@@ -29,11 +30,13 @@ namespace ProductClientHub.API.Controllers
 
                 return Created(string.Empty, response); //função existente dentro da classe ControllerBase
             }
-            catch (ArgumentException ex)
+            catch (ProductClientHubException ex)
             {
+                var errors = ex.GetErros(); //pega as mensagens de erro da exceção personalizada
+
                 //bad request = erro de requisição
                 //instanciando um objeto da classe ResponseErrorMessagesJson para retornar mensagens de erro
-                return BadRequest(new ResponseErrorMessagesJson(ex.Message));
+                return BadRequest(new ResponseErrorMessagesJson(errors));
             }
             catch
             {
