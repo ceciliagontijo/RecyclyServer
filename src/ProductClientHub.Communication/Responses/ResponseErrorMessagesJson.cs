@@ -13,9 +13,8 @@
         }
 
         public ResponseErrorMessagesJson(List<string> messages)
-        //obriga a ter pelo menos uma mensagem de erro sempre que a classe for instanciada
         {
-            Errors = messages; //adiciona a mensagem recebida na lista de erros
+            Errors = messages;
         }
     }
 }

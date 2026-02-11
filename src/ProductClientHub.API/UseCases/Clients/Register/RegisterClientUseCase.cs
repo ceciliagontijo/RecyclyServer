@@ -17,9 +17,9 @@ namespace ProductClientHub.API.UseCases.Clients.Register
 
             if (result.IsValid == false)
             {
-                // errors vai receber as mensagens de erro
-                // result.Errors é uma coleção de erros, (falha => falha.ErrorMessage) vai extrair a mensagem específica de cada erro
-                var errors = result.Errors.Select(falha => falha.ErrorMessage).ToList();
+                // após dar erro no result, o FluentValidation gera uma lista de objetos de erro (contendo nao so a string de erro)
+                // o select pega só a string (errormessage) de cada objeto de erro da lista e transforma em uma nova lista só de string de erros
+                var errors = result.Errors.Select(erro => erro.ErrorMessage).ToList();
 
                 throw new ErrorOnValidationException(errors);
             }

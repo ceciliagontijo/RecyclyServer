@@ -8,7 +8,7 @@
         private readonly List<string> _errors;
         public ErrorOnValidationException(List<string> errorMessages) : base(string.Empty)
         {
-            _errors = errorMessages; // salva na classe a lista de erros passada no construtor
+            _errors = errorMessages; // salva na classe(exceção) a lista de erros passada no construtor
         }
 
         // implementa o método da classe pai e recebe como a exceção retorna os erros para a API(lista)
