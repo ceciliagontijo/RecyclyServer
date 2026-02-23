@@ -1,4 +1,6 @@
-﻿using ProductClientHub.Communication.Requets;
+﻿using ProductClientHub.API.Entities;
+using ProductClientHub.API.Infrastructure;
+using ProductClientHub.Communication.Requets;
 using ProductClientHub.Communication.Responses;
 using ProductClientHub.Exception.ExceptionsBase;
 
@@ -8,6 +10,31 @@ namespace ProductClientHub.API.UseCases.Clients.Register
     public class RegisterClientUseCase
     {
         public ResponseClientJson Execute(RequestClientJson request)
+        {
+            
+            Validate(request);
+
+            var dbContext = new ProductClientDbContext();
+
+            var entity = new Client //instacia da classe Client, representando o cliente registrado e seus dados
+            {
+                Name = request.Name,
+                Email = request.Email
+            };
+
+            dbContext.Clients.Add(entity);  //prepara para adicionar um cliente no banco
+
+            dbContext.SaveChanges(); //executa as queries pendentes
+
+
+            return new ResponseClientJson
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+            };
+        }
+
+        private void Validate(RequestClientJson request)
         {
             // objeto criado vai receber as regras de validação ao entrar no construtor
             var validator = new RegisterClientValidator();
@@ -23,8 +50,6 @@ namespace ProductClientHub.API.UseCases.Clients.Register
 
                 throw new ErrorOnValidationException(errors);
             }
-
-            return new ResponseClientJson();
         }
     }
 }
