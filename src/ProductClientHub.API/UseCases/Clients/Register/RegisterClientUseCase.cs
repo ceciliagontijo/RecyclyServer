@@ -6,6 +6,7 @@ using ProductClientHub.Exception.ExceptionsBase;
 
 namespace ProductClientHub.API.UseCases.Clients.Register
     // classe responsável por registrar um novo cliente no sistema
+
 {
     public class RegisterClientUseCase
     {
@@ -19,7 +20,9 @@ namespace ProductClientHub.API.UseCases.Clients.Register
             var entity = new Client //instacia da classe Client, representando o cliente registrado e seus dados
             {
                 Name = request.Name,
-                Email = request.Email
+                Email = request.Email,
+                Password = BCrypt.Net.BCrypt.HashPassword(request.Password),
+                CPF = request.CPF
             };
 
             dbContext.Clients.Add(entity);  //prepara para adicionar um cliente no banco
