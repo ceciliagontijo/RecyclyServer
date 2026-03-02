@@ -3,10 +3,9 @@ using ProductClientHub.API.Entities;
 
 namespace ProductClientHub.API.Infrastructure
 {
-    public class ProductClientDbContext : DbContext
+    public class RecyclyServerDbContext : DbContext
     {
-        public DbSet<Client> Clients { get; set; } //variavel que representa a tabela de clientes no banco de dados
-        public DbSet<Product> Products { get; set; }
+        public DbSet<User> Clients { get; set; } //variavel que representa a tabela de clientes no banco de dados
 
         //conectando com o banco de dados
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

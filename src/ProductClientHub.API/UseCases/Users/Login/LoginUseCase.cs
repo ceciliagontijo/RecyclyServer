@@ -12,7 +12,7 @@ namespace ProductClientHub.API.UseCases.Clients.Login
     {
         public ResponseClientJson Execute(RequestLogin request)
         {
-            var dbContext = new ProductClientDbContext();
+            var dbContext = new RecyclyServerDbContext();
 
             var client = dbContext.Clients.FirstOrDefault(c => c.CPF == request.CPF);
 

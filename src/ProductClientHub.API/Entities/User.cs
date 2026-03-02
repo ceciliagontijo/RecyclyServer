@@ -1,6 +1,6 @@
 ﻿namespace ProductClientHub.API.Entities
 {
-    public class Client
+    public class User
     {
         public Guid Id { get; set; } = Guid.NewGuid(); //um ID novo a cada instancia (cada cliente a ser registrado)
 

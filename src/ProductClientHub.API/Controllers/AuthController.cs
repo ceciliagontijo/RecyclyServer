@@ -12,7 +12,7 @@ namespace ProductClientHub.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClientsController : ControllerBase
+    public class AuthController : ControllerBase
     {
         [HttpPost("register")]
         //indica os possíveis tipos de resposta da API

@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="src/ProductClientHub.API/RecyclyServer.API.csproj" />
+  <Project Path="src/ProductClientHub.Communication/RecyclyServer.Communication.csproj" />
+  <Project Path="src/ProductClientHub.Exception/RecyclyServer..Exceptions.csproj" />
+</Solution>

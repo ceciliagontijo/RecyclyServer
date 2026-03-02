@@ -1,8 +1,8 @@
 ﻿namespace ProductClientHub.API.UseCases.Clients.Register
 {
-    internal class ProductClientHubDbContext
+    internal class RecyclyServerDbContext
     {
-        public ProductClientHubDbContext()
+        public RecyclyServerDbContext()
         {
         }
 

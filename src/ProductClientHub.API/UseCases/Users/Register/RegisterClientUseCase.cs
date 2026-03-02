@@ -15,9 +15,9 @@ namespace ProductClientHub.API.UseCases.Clients.Register
             
             Validate(request);
 
-            var dbContext = new ProductClientDbContext();
+            var dbContext = new Infrastructure.RecyclyServerDbContext();
 
-            var entity = new Client //instacia da classe Client, representando o cliente registrado e seus dados
+            var entity = new User //instacia da classe Client, representando o cliente registrado e seus dados
             {
                 Name = request.Name,
                 Email = request.Email,
