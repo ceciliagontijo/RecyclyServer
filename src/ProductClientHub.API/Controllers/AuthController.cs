@@ -16,7 +16,7 @@ namespace ProductClientHub.API.Controllers
     {
         [HttpPost("register")]
         //indica os possíveis tipos de resposta da API
-        [ProducesResponseType(typeof(ResponseClientJson), StatusCodes.Status201Created)] 
+        [ProducesResponseType(typeof(ResponseClientJson), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ResponseErrorMessagesJson), StatusCodes.Status400BadRequest)]
 
         public IActionResult Register([FromBody] RequestClientJson request)
@@ -49,7 +49,7 @@ namespace ProductClientHub.API.Controllers
         }
 
         [HttpPost("login")]
-      
+
         [ProducesResponseType(typeof(ResponseClientJson), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ResponseErrorMessagesJson), StatusCodes.Status400BadRequest)]
 
@@ -62,39 +62,15 @@ namespace ProductClientHub.API.Controllers
 
                 var response = useCase.Execute(request);
 
-                return Ok(response); 
+                return Ok(response);
             }
             catch (ProductClientHubException ex)
             {
-                var errors = ex.GetErros(); 
+                var errors = ex.GetErros();
 
                 return BadRequest(new ResponseErrorMessagesJson(errors));
             }
         }
 
-        [HttpPut]
-        public IActionResult Update()
-        {
-            return Ok(); 
-        }
-
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            return Ok(); 
-        }
-
-        [HttpGet] //não pode ter dois métodos GET iguais - (by-id)
-        [Route("{id}")] //outra forma de definir a rota
-        public IActionResult GetById([FromRoute] Guid id)
-        {
-            return Ok();
-        }
-
-        [HttpDelete]
-        public IActionResult Delete()
-        {
-            return Ok(); 
-        }
     }
 }

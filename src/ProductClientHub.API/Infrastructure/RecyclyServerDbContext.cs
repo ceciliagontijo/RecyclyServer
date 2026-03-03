@@ -10,7 +10,10 @@ namespace ProductClientHub.API.Infrastructure
         //conectando com o banco de dados
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=F:\\Workspace\\ProductClientHubDB.octet-stream");
+            optionsBuilder.UseSqlServer
+             (
+               "Server=localhost\\SQLEXPRESS;Database=RecyclyServer;Trusted_Connection=True;TrustServerCertificate=True"
+             );
         }
       
     }
