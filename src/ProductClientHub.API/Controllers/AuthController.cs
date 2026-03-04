@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProductClientHub.API.UseCases.Clients.Login;
-using ProductClientHub.API.UseCases.Clients.Register;
-using ProductClientHub.Communication.Requets;
-using ProductClientHub.Communication.Responses;
-using ProductClientHub.Exception.ExceptionsBase;
+using RecyclyServer.API.UseCases.Clients.Login;
+using RecyclyServer.API.UseCases.Clients.Register;
+using RecyclyServer.Communication.Requets;
+using RecyclyServer.Communication.Responses;
+using RecyclyServer.Exception.ExceptionsBase;
 using System.Net;
 // classe controller: mostra o que a API vai receber e retornar em cada endpoint (rotas)
-namespace ProductClientHub.API.Controllers
+namespace RecyclyServer.API.Controllers
 
 {
     [Route("api/[controller]")]
@@ -33,7 +33,7 @@ namespace ProductClientHub.API.Controllers
 
                 return Created(string.Empty, response); //função existente dentro da classe ControllerBase
             }
-            catch (ProductClientHubException ex)
+            catch (RecyclyServerException ex)
             {
                 var errors = ex.GetErros(); //pega as mensagens de erro da exceção personalizada
 
@@ -64,7 +64,7 @@ namespace ProductClientHub.API.Controllers
 
                 return Ok(response);
             }
-            catch (ProductClientHubException ex)
+            catch (RecyclyServerException ex)
             {
                 var errors = ex.GetErros();
 

@@ -1,7 +1,7 @@
-﻿namespace ProductClientHub.Exception.ExceptionsBase
+﻿namespace RecyclyServer.Exception.ExceptionsBase
 {
     
-    public class ErrorOnValidationException : ProductClientHubException
+    public class ErrorOnValidationException : RecyclyServerException
     {
         // readonly permite que a lista seja alterada apenas no construtor
         // _erros vai guardar a lista de erros dessa exceção personalizada (ErrorOnValidationException)

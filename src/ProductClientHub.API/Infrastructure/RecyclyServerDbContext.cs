@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProductClientHub.API.Entities;
+using RecyclyServer.API.Entities;
 
-namespace ProductClientHub.API.Infrastructure
+namespace RecyclyServer.API.Infrastructure
 {
     public class RecyclyServerDbContext : DbContext
     {

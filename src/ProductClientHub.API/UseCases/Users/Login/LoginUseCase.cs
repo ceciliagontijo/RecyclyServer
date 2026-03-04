@@ -1,12 +1,12 @@
-﻿using ProductClientHub.API.Entities;
-using ProductClientHub.API.Infrastructure;
-using ProductClientHub.Communication.Requets;
-using ProductClientHub.Communication.Responses;
-using ProductClientHub.Exception.ExceptionsBase;
+﻿using RecyclyServer.API.Entities;
+using RecyclyServer.API.Infrastructure;
+using RecyclyServer.Communication.Requets;
+using RecyclyServer.Communication.Responses;
+using RecyclyServer.Exception.ExceptionsBase;
 using BCrypt.Net;
 
 
-namespace ProductClientHub.API.UseCases.Clients.Login
+namespace RecyclyServer.API.UseCases.Clients.Login
 {
     public class LoginUseCase
     {

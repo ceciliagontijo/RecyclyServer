@@ -1,4 +1,4 @@
-﻿namespace ProductClientHub.Communication.Responses
+﻿namespace RecyclyServer.Communication.Responses
 {
     public class ResponseErrorMessagesJson
         // classe que devolve mensagens de erro em formato json

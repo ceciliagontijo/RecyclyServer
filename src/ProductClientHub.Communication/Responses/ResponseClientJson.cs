@@ -1,4 +1,4 @@
-﻿namespace ProductClientHub.Communication.Responses
+﻿namespace RecyclyServer.Communication.Responses
 {
     public class ResponseClientJson
     {

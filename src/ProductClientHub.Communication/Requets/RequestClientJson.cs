@@ -1,4 +1,4 @@
-﻿namespace ProductClientHub.Communication.Requets
+﻿namespace RecyclyServer.Communication.Requets
 {
     public class RequestClientJson
     {

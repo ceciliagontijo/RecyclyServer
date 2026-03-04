@@ -1,4 +1,4 @@
-﻿namespace ProductClientHub.API.UseCases.Clients.Register
+﻿namespace RecyclyServer.API.UseCases.Clients.Register
 {
     internal class RecyclyServerDbContext
     {

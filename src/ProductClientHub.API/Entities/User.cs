@@ -1,4 +1,4 @@
-﻿namespace ProductClientHub.API.Entities
+﻿namespace RecyclyServer.API.Entities
 {
     public class User
     {

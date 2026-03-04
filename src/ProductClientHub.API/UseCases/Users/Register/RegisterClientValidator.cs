@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using ProductClientHub.Communication.Requets;
+using RecyclyServer.Communication.Requets;
 
-namespace ProductClientHub.API.UseCases.Clients.Register
+namespace RecyclyServer.API.UseCases.Clients.Register
 {
     public class RegisterClientValidator : AbstractValidator<RequestClientJson> //biblioteca FluentValidation
     {
