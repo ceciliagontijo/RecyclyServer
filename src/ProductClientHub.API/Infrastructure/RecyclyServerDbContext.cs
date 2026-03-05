@@ -5,7 +5,9 @@ namespace RecyclyServer.API.Infrastructure
 {
     public class RecyclyServerDbContext : DbContext
     {
-        public DbSet<User> Clients { get; set; } //variavel que representa a tabela de clientes no banco de dados
+        public DbSet<User> Clients { get; set; } 
+
+        public DbSet<CollectionPoint> CollectionPoints { get; set; } 
 
         //conectando com o banco de dados
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

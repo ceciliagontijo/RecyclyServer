@@ -1,11 +1,10 @@
-﻿namespace RecyclyServer.API.Entities
+﻿namespace RecyclyServerCommunication.Responses
 {
-    public class CollectionPoints
+    public class ResponseCollectionPoints
     {
-        public Guid Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public Guid CooperativeId { get; set; }
+
     }
 }
