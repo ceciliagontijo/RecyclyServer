@@ -30,9 +30,9 @@ namespace RecyclyServer.API.Controllers
 
                 return Created(string.Empty, response); 
             }
-            catch (RecyclyServerException ex)
+            catch (RecyclyServerExceptions ex)
             {
-                var errors = ex.GetErros();
+                var errors = ex.GetErrors();
       
                 return BadRequest(new ResponseErrorMessagesJson(errors));
             }
@@ -59,9 +59,9 @@ namespace RecyclyServer.API.Controllers
 
                 return Ok(response);
             }
-            catch (RecyclyServerException ex)
+            catch (RecyclyServerExceptions ex)
             {
-                var errors = ex.GetErros();
+                var errors = ex.GetErrors();
 
                 return BadRequest(new ResponseErrorMessagesJson(errors));
             }

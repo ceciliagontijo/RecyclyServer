@@ -1,7 +1,9 @@
-﻿namespace RecyclyServer.Exception.ExceptionsBase
+﻿using System.Net;
+
+namespace RecyclyServer.Exception.ExceptionsBase
 {
     
-    public class ErrorOnValidationException : RecyclyServerException
+    public class ErrorOnValidationException : RecyclyServerExceptions
     {
         // readonly permite que a lista seja alterada apenas no construtor
         // _erros vai guardar a lista de erros dessa exceção personalizada (ErrorOnValidationException)
@@ -12,9 +14,10 @@
         }
 
         // implementa o método da classe pai e recebe como a exceção retorna os erros para a API(lista)
-        public override List<string> GetErros()
+        public override List<string> GetErrors()
         {
             return _errors;
         }
+        public override HttpStatusCode GetHttpStatusCode() => HttpStatusCode.NotFound;
     }
 }

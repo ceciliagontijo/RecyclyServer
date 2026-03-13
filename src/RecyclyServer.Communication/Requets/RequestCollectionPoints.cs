@@ -5,5 +5,7 @@
         public string Name { get; set; } = string.Empty;
         public string CEP { get; set; } = string.Empty;
 
+        public List<Guid> MaterialsIds { get; set; } = new();
+
     }
 }

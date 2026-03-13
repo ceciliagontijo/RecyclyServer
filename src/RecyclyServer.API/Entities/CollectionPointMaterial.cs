@@ -1,9 +1,9 @@
 ﻿namespace RecyclyServer.API.Entities
 {
-    public class Materials
+    public class CollectionPointMaterial
     {
-        public string Name { get; set; } = string.Empty;
-
         public Guid CollectionPointId { get; set; }
+
+        public Guid MaterialId { get; set; }
     }
 }

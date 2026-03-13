@@ -34,10 +34,22 @@ namespace RecyclyServer.API.UseCases.CollectionPoints
 
             dbContext.CollectionPoints.Add(entity);  
 
-            dbContext.SaveChanges(); 
+            dbContext.SaveChanges();
+
+            foreach (var materialId in request.MaterialsIds)
+            {
+                dbContext.CollectionPointMaterials.Add(new CollectionPointMaterial
+                {
+                    CollectionPointId = entity.Id,
+                    MaterialId = materialId
+                });
+            }
+
+            dbContext.SaveChanges();
 
             return new ResponseCollectionPoints
             {
+                Id = entity.Id,
                 Name = entity.Name,
                 Latitude = entity.Latitude,
                 Longitude = entity.Longitude

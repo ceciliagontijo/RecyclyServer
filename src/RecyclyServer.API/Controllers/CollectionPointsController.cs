@@ -31,9 +31,9 @@ namespace RecyclyServer.API.Controllers
 
                     return Created(string.Empty, response); 
                 }
-                catch (RecyclyServerException ex)
+                catch (RecyclyServerExceptions ex)
                 {
-                    var errors = ex.GetErros(); 
+                    var errors = ex.GetErrors(); 
                     
                     return BadRequest(new ResponseErrorMessagesJson(errors));
                 }
@@ -43,6 +43,20 @@ namespace RecyclyServer.API.Controllers
                     return StatusCode(StatusCodes.Status500InternalServerError, new ResponseErrorMessagesJson("UNKNOWN ERROR"));
                 }
             }
+
+        [HttpGet]
+        [Route("{materialId}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ResponseErrorMessagesJson), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ResponseErrorMessagesJson), StatusCodes.Status404NotFound)]
+        public IActionResult Update([FromRoute] Guid materialId)
+        {
+            var useCase = new GetCollectionPointUseCase();
+
+            useCase.Execute(materialId);
+
+            return NoContent(); //realizou com sucesso e nao tem nada p devolver
         }
+    }
     }
 

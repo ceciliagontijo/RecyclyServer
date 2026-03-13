@@ -7,7 +7,11 @@ namespace RecyclyServer.API.Infrastructure
     {
         public DbSet<User> Clients { get; set; } 
 
-        public DbSet<CollectionPoint> CollectionPoints { get; set; } 
+        public DbSet<CollectionPoint> CollectionPoints { get; set; }
+
+        public DbSet<Material> Materials { get; set; }
+
+        public DbSet<CollectionPointMaterial> CollectionPointMaterials { get; set; }
 
         //conectando com o banco de dados
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -17,6 +21,11 @@ namespace RecyclyServer.API.Infrastructure
                "Server=localhost\\SQLEXPRESS;Database=RecyclyServer;Trusted_Connection=True;TrustServerCertificate=True"
              );
         }
-      
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CollectionPointMaterial>()
+                .HasKey(cpm => new { cpm.CollectionPointId, cpm.MaterialId });
+        }
+
     }
 }
