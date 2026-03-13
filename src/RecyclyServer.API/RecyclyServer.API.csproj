@@ -19,6 +19,8 @@
   <ItemGroup>
     <ProjectReference Include="..\ProductClientHub.Communication\RecyclyServerCommunication.csproj" />
     <ProjectReference Include="..\ProductClientHub.Exception\RecyclyServer.Exceptions.csproj" />
+    <ProjectReference Include="..\RecyclyServer.Communication\RecyclyServer.Communication.csproj" />
+    <ProjectReference Include="..\RecyclyServer.Exception\RecyclyServer.Exception.csproj" />
   </ItemGroup>
 
 </Project>
