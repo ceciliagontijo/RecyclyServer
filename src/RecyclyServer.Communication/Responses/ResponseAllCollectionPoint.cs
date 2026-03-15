@@ -1,7 +1,9 @@
-﻿namespace RecyclyServer.Communication.Responses
+﻿using RecyclyServerCommunication.Responses;
+
+namespace RecyclyServer.Communication.Responses
 {
     public class ResponseAllCollectionPoint
     {
-        public List<ResponseAllCollectionPoint> CollectionPoints { get; set; } = [];
+        public List<ResponseCollectionPoints> CollectionPoints { get; set; } = [];
     }
 }

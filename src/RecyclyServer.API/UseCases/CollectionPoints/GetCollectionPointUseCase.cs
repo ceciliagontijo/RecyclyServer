@@ -19,24 +19,30 @@ namespace RecyclyServer.API.UseCases.CollectionPoints
             Validate(dbContext, materialId);
 
 
-            var points = dbContext.CollectionPoints.ToList(); 
+            var pointIds = dbContext.CollectionPointMaterials //busca na tabela de relacionamento os Ids dos pontos de coleta
+            .Where(x => x.MaterialId == materialId)
+            .Select(x => x.CollectionPointId)
+            .ToList();
 
+            var points = dbContext.CollectionPoints // pega esses Ids e busca os pontos de coleta correspondentes
+                .Where(p => pointIds.Contains(p.Id))
+                .ToList();
 
             return new ResponseAllCollectionPoint
             {
-                CollectionPoints = points.Select(points => new ResponseCollectionPoints // seleciona retorno do tipo ResponseShortCLientJson
+                CollectionPoints = points.Select(point => new ResponseCollectionPoints 
                 {
-                    I = points.Id,
-                    Name = points.Name,
-                    Latitude = points.Latitude,
-                    Longitude = points.Longitude,
+                    Id = point.Id,
+                    Name = point.Name,
+                    Latitude = point.Latitude,
+                    Longitude = point.Longitude,
                 }).ToList()
             };
         }
 
         private void Validate(RecyclyServerDbContext dbContext, Guid materialId)
         {
-            var materialExist = dbContext.CollectionPointMaterials.Any(material => material.Id == materialId);
+            var materialExist = dbContext.CollectionPointMaterials.Any(material => material.MaterialId == materialId);
             if (materialExist == false)
                 throw new NotFoundException("Client not found");
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using RecyclyServer.API.Services;
 using RecyclyServer.API.UseCases.Clients.Register;
 using RecyclyServer.API.UseCases.CollectionPoints;
@@ -49,13 +50,17 @@ namespace RecyclyServer.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(ResponseErrorMessagesJson), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ResponseErrorMessagesJson), StatusCodes.Status404NotFound)]
-        public IActionResult Update([FromRoute] Guid materialId)
+        public IActionResult GetById([FromRoute] Guid materialId)
         {
             var useCase = new GetCollectionPointUseCase();
 
-            useCase.Execute(materialId);
+            var response = useCase.Execute(materialId);
 
-            return NoContent(); //realizou com sucesso e nao tem nada p devolver
+            if (response.CollectionPoints.Count == 0)
+                return NoContent();
+
+            return Ok(response);
+
         }
     }
     }
